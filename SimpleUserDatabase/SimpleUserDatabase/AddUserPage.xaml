@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SimpleUserDatabase.AddUserPage"
+             xmlns:local="clr-namespace:SimpleUserDatabase" 
+             xmlns:viewmodel="clr-namespace:SimpleUserDatabase.ViewModels"
+             x:DataType="local:ViewModels.AddUserViewModel">
+    <ContentPage.BindingContext>
+        <viewmodel:AddUserViewModel/>
+    </ContentPage.BindingContext>
+    <Grid Padding="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Text="First Name: " HorizontalTextAlignment="End" VerticalOptions="Center"/>
+        <Entry Text="{Binding Person.FirstName}" MaxLength="100" Grid.Column="1"/>
+        <Label Text="Last Name: " Grid.Row="1" HorizontalTextAlignment="End" VerticalOptions="Center"/>
+        <Entry Text="{Binding Person.LastName}" MaxLength="100" Grid.Row="1" Grid.Column="1"/>
+        <Label Text="Email: " Grid.Row="2" HorizontalTextAlignment="End" VerticalOptions="Center"/>
+        <Entry Text="{Binding Person.Email}" MaxLength="100" Grid.Row="2" Grid.Column="1"/>
+        <Label Text="Password: " Grid.Row="3" HorizontalTextAlignment="End" VerticalOptions="Center"/>
+        <Entry Text="{Binding Person.Password}" IsPassword="True" MaxLength="100" Grid.Row="3" Grid.Column="1"/>
+        <Button Command="{Binding AddUserCommand}" Text="Add User" Grid.Row="4" Grid.ColumnSpan="2" HorizontalOptions="Center" WidthRequest="250" BackgroundColor="Purple" TextColor="White" />
+        <Label Text="{Binding Person.FirstName}" Grid.Row="5" Grid.ColumnSpan="2" TextColor="Blue" />
+    </Grid>
+
+</ContentPage>
