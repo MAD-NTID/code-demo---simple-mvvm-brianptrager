@@ -10,7 +10,7 @@ namespace SimpleUserDatabase
         {
             InitializeComponent();
 
-            MainPage = new AddUserPage();
+            MainPage = new UsersListPage();
         }
 
         protected override void OnStart()

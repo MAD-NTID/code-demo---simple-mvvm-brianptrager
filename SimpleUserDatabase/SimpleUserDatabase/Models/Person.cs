@@ -52,6 +52,13 @@ namespace SimpleUserDatabase.Models
             }
         }
 
+        public string FullName {
+            get
+            {
+                return String.Format($"{FirstName} {LastName}");
+            }          
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:viewmodel="clr-namespace:SimpleUserDatabase.ViewModels" 
+             xmlns:model="clr-namespace:SimpleUserDatabase.Models" 
+             x:Class="SimpleUserDatabase.UsersListPage">
+    <ContentPage.BindingContext>
+        <viewmodel:UsersListViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <RelativeLayout>
+            <StackLayout Padding="20,0,0,0">
+                <SwipeView android:SwipeView.SwipeTransitionMode="Drag" BackgroundColor="Transparent">
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Delete"
+                                       IsDestructive="True"
+                                       BackgroundColor="Red" />
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                
+                <ListView 
+                    ItemsSource="{Binding People}"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    RefreshControlColor="Blue"
+                    >
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Person">
+                            <TextCell Text="{Binding FullName}" Detail="{Binding Email}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                </SwipeView>
+            </StackLayout>
+            <Button Text="+" 
+                    FontSize="Large"
+                    CornerRadius="50" 
+                    BackgroundColor="Blue" 
+                    TextColor="White" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="End" 
+                    Margin="275,600,10,10" />
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

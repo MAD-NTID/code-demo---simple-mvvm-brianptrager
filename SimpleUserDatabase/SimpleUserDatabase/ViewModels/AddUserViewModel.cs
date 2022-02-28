@@ -11,7 +11,6 @@ namespace SimpleUserDatabase.ViewModels
     public class AddUserViewModel : INotifyPropertyChanged
     {
         public Person Person { get; } = new Person();
-        public List<Person> People { get; set; }
         public ICommand AddUserCommand { get; }
         public AddUserViewModel()
         {
@@ -28,11 +27,5 @@ namespace SimpleUserDatabase.ViewModels
             Person.ClearFields();
             Application.Current.MainPage.DisplayAlert("Status", "New User Added!", "OK");
         }
-
-        public void PopulateList()
-        {
-            People.Add(new Person() { FirstName = "John", LastName = "Doe", Email = "email", Password = "duh" });
-        }
-
     }
 }
